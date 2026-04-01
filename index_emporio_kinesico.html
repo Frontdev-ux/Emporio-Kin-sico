@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Emporio Kinésico | Rehabilitación y bienestar en Almagro</title>
+  <meta name="description" content="Emporio Kinésico es un espacio de rehabilitación y bienestar en Almagro, Buenos Aires. Kinesiología, RPG, masajes, entrenamiento, Pilates Mat, yoga en silla y línea beauty." />
+  <style>
+    :root {
+      --bg: #f5f8f7;
+      --surface: #ffffff;
+      --surface-2: #edf4f2;
+      --text: #243436;
+      --muted: #5d7172;
+      --line: #d7e3df;
+      --accent: #8fb7ad;
+      --accent-2: #c8ddd6;
+      --dark: #1f3132;
+      --success: #2f6b5d;
+      --shadow: 0 20px 60px rgba(23, 42, 40, 0.08);
+      --radius: 22px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: linear-gradient(180deg, #fbfcfb 0%, var(--bg) 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(14px);
+      background: rgba(251, 252, 251, 0.84);
+      border-bottom: 1px solid rgba(215, 227, 223, 0.8);
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 14px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      display: grid;
+      place-items: center;
+      background: radial-gradient(circle at top, #ffffff 0%, #e7f0ed 100%);
+      color: var(--dark);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+    }
+
+    .brand-copy strong {
+      display: block;
+      font-size: 0.98rem;
+      letter-spacing: 0.03em;
+    }
+
+    .brand-copy span {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .btn,
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border-radius: 999px;
+      padding: 14px 22px;
+      font-weight: 600;
+      transition: 0.25s ease;
+      border: 1px solid transparent;
+      white-space: nowrap;
+    }
+
+    .btn {
+      background: var(--dark);
+      color: white;
+      box-shadow: var(--shadow);
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+
+    .btn-secondary {
+      background: transparent;
+      border-color: var(--line);
+      color: var(--text);
+    }
+
+    .hero {
+      padding: 72px 0 48px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(143, 183, 173, 0.14);
+      color: var(--success);
+      font-size: 0.92rem;
+      font-weight: 600;
+      margin-bottom: 18px;
+    }
+
+    h1, h2, h3 { margin: 0 0 16px; line-height: 1.1; }
+
+    h1 {
+      font-size: clamp(2.55rem, 6vw, 4.7rem);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+    }
+
+    h2 {
+      font-size: clamp(1.9rem, 4vw, 3rem);
+      letter-spacing: -0.03em;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+      letter-spacing: -0.02em;
+    }
+
+    .lead {
+      font-size: 1.12rem;
+      color: var(--muted);
+      max-width: 64ch;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin: 28px 0 26px;
+    }
+
+    .quick-facts {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .fact {
+      background: rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(215, 227, 223, 0.95);
+      border-radius: 18px;
+      padding: 16px;
+      box-shadow: var(--shadow);
+    }
+
+    .fact strong {
+      display: block;
+      font-size: 0.95rem;
+      margin-bottom: 6px;
+    }
+
+    .fact span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .hero-card {
+      background: linear-gradient(180deg, #ffffff 0%, #f5faf8 100%);
+      border: 1px solid rgba(215, 227, 223, 1);
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: auto -50px -70px auto;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, rgba(200, 221, 214, 0.65) 0%, rgba(200, 221, 214, 0) 72%);
+    }
+
+    .card-badge {
+      display: inline-flex;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      background: rgba(255,255,255,0.88);
+      font-size: 0.88rem;
+      margin-bottom: 18px;
+    }
+
+    .feature-list,
+    .check-list {
+      display: grid;
+      gap: 12px;
+      margin: 18px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .feature-list li,
+    .check-list li {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      color: var(--text);
+    }
+
+    .feature-list li::before,
+    .check-list li::before {
+      content: "•";
+      color: var(--success);
+      font-size: 1.2rem;
+      line-height: 1;
+      margin-top: 2px;
+    }
+
+    section { padding: 52px 0; }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 30px;
+      align-items: end;
+      margin-bottom: 28px;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      font-size: 1.02rem;
+      margin: 0;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .service-card p,
+    .card p,
+    .note,
+    .muted {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .pill {
+      display: inline-flex;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 9px 12px;
+      font-size: 0.9rem;
+      background: var(--surface-2);
+      color: var(--text);
+    }
+
+    .steps {
+      counter-reset: step;
+      display: grid;
+      gap: 14px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 64px 1fr;
+      gap: 16px;
+      align-items: start;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .step::before {
+      counter-increment: step;
+      content: counter(step, decimal-leading-zero);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(143, 183, 173, 0.18);
+      color: var(--dark);
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+    }
+
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .testimonial {
+      background: linear-gradient(180deg, #ffffff 0%, #f7fbf9 100%);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .testimonial .quote {
+      font-size: 1.02rem;
+      color: var(--text);
+      margin-bottom: 14px;
+    }
+
+    .testimonial .meta {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .cta-band {
+      background: linear-gradient(120deg, #203334 0%, #315255 100%);
+      color: white;
+      border-radius: 30px;
+      padding: 34px;
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .cta-band p { margin: 0; color: rgba(255,255,255,0.84); }
+
+    .faq {
+      display: grid;
+      gap: 12px;
+    }
+
+    details {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px 20px;
+      box-shadow: var(--shadow);
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: 600;
+      list-style: none;
+    }
+
+    summary::-webkit-details-marker { display: none; }
+    details p { color: var(--muted); margin: 12px 0 0; }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 18px;
+    }
+
+    .contact-panel {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 16px;
+      margin: 18px 0 0;
+    }
+
+    .contact-item small {
+      display: block;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .map-box {
+      min-height: 100%;
+      background: linear-gradient(180deg, #ffffff 0%, #eff6f3 100%);
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .mini-note {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    footer {
+      padding: 32px 0 50px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .floating-wa {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 50;
+      box-shadow: var(--shadow);
+    }
+
+    .floating-wa .btn { padding: 14px 18px; }
+
+    @media (max-width: 1040px) {
+      .hero-grid,
+      .section-head,
+      .contact-grid,
+      .grid-3,
+      .grid-2,
+      .testimonials,
+      .cta-band {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links { display: none; }
+      .quick-facts { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 720px) {
+      .hero { padding-top: 42px; }
+      .topbar-inner { gap: 12px; }
+      .brand-copy span { display: none; }
+      h1 { font-size: 2.5rem; }
+      .btn, .btn-secondary { width: 100%; }
+      .hero-actions { flex-direction: column; }
+      .cta-band { padding: 26px; }
+      .step { grid-template-columns: 1fr; }
+      .floating-wa { left: 16px; right: 16px; }
+      .floating-wa .btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a href="#inicio" class="brand" aria-label="Emporio Kinésico">
+        <div class="brand-mark">EK</div>
+        <div class="brand-copy">
+          <strong>Emporio Kinésico</strong>
+          <span>Rehabilitación y bienestar en Almagro, CABA</span>
+        </div>
+      </a>
+
+      <nav class="nav-links" aria-label="Navegación principal">
+        <a href="#servicios">Servicios</a>
+        <a href="#enfoque">Enfoque</a>
+        <a href="#modalidades">Modalidades</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+
+      <a class="btn" href="https://wa.me/5491140453263?text=Hola%20Emporio%20Kin%C3%A9sico%2C%20quisiera%20consultar%20por%20un%20turno." target="_blank" rel="noopener noreferrer">Reservar por WhatsApp</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Almagro, CABA · atención personalizada</div>
+          <h1>Un espacio pensado para aliviar dolores, mejorar tu movilidad y acompañarte en cada etapa.</h1>
+          <p class="lead">
+            En Emporio Kinésico trabajamos desde una mirada integral de rehabilitación y bienestar, con atención cercana, tratamientos personalizados y un enfoque adaptado a tus necesidades y objetivos.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn" href="https://wa.me/5491140453263?text=Hola%20Emporio%20Kin%C3%A9sico%2C%20quiero%20reservar%20un%20turno." target="_blank" rel="noopener noreferrer">Quiero reservar un turno</a>
+            <a class="btn-secondary" href="#servicios">Ver servicios</a>
+          </div>
+
+          <div class="quick-facts" aria-label="Datos rápidos">
+            <div class="fact">
+              <strong>Ubicación</strong>
+              <span>Potosí 3910, Almagro, CABA</span>
+            </div>
+            <div class="fact">
+              <strong>Horarios</strong>
+              <span>Lunes a viernes de 8 a 21 hs</span>
+            </div>
+            <div class="fact">
+              <strong>Valoración</strong>
+              <span>5.0 estrellas en 61 opiniones</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-card" aria-label="Resumen de propuesta">
+          <div class="card-badge">Rehabilitación y bienestar</div>
+          <h3>Qué vas a encontrar</h3>
+          <ul class="feature-list">
+            <li>Atención personalizada, enfocada en cada caso y en objetivos reales de evolución.</li>
+            <li>Un equipo valorado por su dedicación, calidad humana y trato cercano.</li>
+            <li>Servicios orientados a aliviar dolores, recuperar movilidad y mejorar bienestar general.</li>
+            <li>Opciones de trabajo por sesión o por packs, con factura para reintegros.</li>
+          </ul>
+          <div class="pill-row" aria-label="Etiquetas">
+            <span class="pill">Kinesiología</span>
+            <span class="pill">RPG</span>
+            <span class="pill">Pilates Mat</span>
+            <span class="pill">Masajes</span>
+            <span class="pill">Beauty</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="servicios">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Servicios pensados para acompañar tu recuperación y bienestar</h2>
+          </div>
+          <p>Atención particular con propuestas terapéuticas y complementarias para rehabilitación, movilidad, entrenamiento y cuidado corporal.</p>
+        </div>
+
+        <div class="grid-3">
+          <article class="card service-card">
+            <h3>Kinesiología</h3>
+            <p>Abordaje personalizado para tratar dolor, recuperar funciones y acompañar procesos de rehabilitación con criterio profesional.</p>
+          </article>
+          <article class="card service-card">
+            <h3>RPG</h3>
+            <p>Trabajo postural global orientado a mejorar alineación, movilidad y patrones que impactan en molestias recurrentes.</p>
+          </article>
+          <article class="card service-card">
+            <h3>Masajes</h3>
+            <p>Espacios pensados para descargar tensiones, complementar tratamientos y favorecer una mejor sensación corporal.</p>
+          </article>
+          <article class="card service-card">
+            <h3>Entrenamiento</h3>
+            <p>Propuestas adaptadas a objetivos personales, enfocadas en fortalecimiento, movilidad y continuidad del proceso terapéutico.</p>
+          </article>
+          <article class="card service-card">
+            <h3>Pilates Mat y yoga en silla</h3>
+            <p>Opciones accesibles y funcionales para mejorar postura, consciencia corporal, estabilidad y bienestar general.</p>
+          </article>
+          <article class="card service-card">
+            <h3>Línea beauty</h3>
+            <p>Tratamientos faciales y corporales que amplían la propuesta del centro desde una mirada integral de cuidado personal.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="enfoque">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Un enfoque humano, personalizado y profesional</h2>
+          </div>
+          <p>La experiencia está diseñada para que cada paciente se sienta acompañado, entendido y tratado según sus necesidades concretas.</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3>Lo que más valoran los pacientes</h3>
+            <ul class="check-list">
+              <li>La dedicación real del equipo en cada consulta.</li>
+              <li>La calidad humana en la atención y el trato cercano.</li>
+              <li>El tratamiento personalizado según dolor, objetivo y evolución.</li>
+              <li>Un espacio que combina rehabilitación con bienestar.</li>
+              <li>La sensación de estar contenidos durante todo el proceso.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Ideal para personas que buscan</h3>
+            <ul class="check-list">
+              <li>Aliviar dolores y mejorar movilidad con acompañamiento profesional.</li>
+              <li>Un centro que adapte el tratamiento a su situación puntual.</li>
+              <li>Opciones terapéuticas y corporales en un mismo espacio.</li>
+              <li>Atención particular, con seguimiento y comunicación clara.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="modalidades">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Modalidades de atención simples y claras</h2>
+          </div>
+          <p>Emporio Kinésico trabaja con distintas opciones para adaptarse a la frecuencia que cada persona necesita.</p>
+        </div>
+
+        <div class="steps">
+          <article class="step">
+            <div>
+              <h3>Elegí tu modalidad</h3>
+              <p class="muted">Podés reservar por sesión individual, pack de 4 sesiones o pack de 10 sesiones, según tu necesidad y continuidad de tratamiento.</p>
+            </div>
+          </article>
+          <article class="step">
+            <div>
+              <h3>Reservá tu turno</h3>
+              <p class="muted">Para confirmar la reserva se solicita una seña del 50% del valor de la sesión o servicio correspondiente.</p>
+            </div>
+          </article>
+          <article class="step">
+            <div>
+              <h3>Asistí con tranquilidad</h3>
+              <p class="muted">Se emite factura para reintegros. Las cancelaciones con menos de 48 horas tienen un cargo del 100% de la sesión.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="section-head" style="margin-top: 34px;">
+          <div>
+            <h2>Prueba social real y consistente</h2>
+          </div>
+          <p>
+            Con 5.0 estrellas en 61 opiniones, las reseñas destacan especialmente la dedicación del equipo, la calidad humana y la personalización del tratamiento.
+          </p>
+        </div>
+
+        <div class="testimonials">
+          <article class="testimonial">
+            <div class="quote">“Se nota la dedicación en cada sesión. No se siente como una atención en serie, sino realmente personalizada.”</div>
+            <div class="meta">Basado en el tipo de valoración mencionada por pacientes</div>
+          </article>
+          <article class="testimonial">
+            <div class="quote">“La calidad humana hace toda la diferencia. Te escuchan, te explican y adaptan el tratamiento a lo que necesitás.”</div>
+            <div class="meta">Basado en los comentarios recurrentes sobre la atención</div>
+          </article>
+          <article class="testimonial">
+            <div class="quote">“Es un espacio donde no solo trabajás el dolor o la movilidad, también sentís acompañamiento y bienestar.”</div>
+            <div class="meta">Texto alineado al posicionamiento del centro</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section aria-label="Llamado a la acción final">
+      <div class="container">
+        <div class="cta-band">
+          <div>
+            <h2>¿Querés consultar o reservar tu turno?</h2>
+            <p>Escribinos por WhatsApp y coordinamos la modalidad más adecuada para vos.</p>
+          </div>
+          <a class="btn" href="https://wa.me/5491140453263?text=Hola%20Emporio%20Kin%C3%A9sico%2C%20quisiera%20m%C3%A1s%20informaci%C3%B3n." target="_blank" rel="noopener noreferrer">Escribir por WhatsApp</a>
+        </div>
+      </div>
+    </section>
+
+    <section aria-label="Preguntas frecuentes">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Preguntas frecuentes</h2>
+          </div>
+          <p>Información útil para resolver dudas antes de reservar.</p>
+        </div>
+
+        <div class="faq">
+          <details>
+            <summary>¿Qué días y horarios atienden?</summary>
+            <p>La atención particular es de lunes a viernes, de 8 a 21 hs.</p>
+          </details>
+          <details>
+            <summary>¿Cómo se confirma una reserva?</summary>
+            <p>Para reservar un turno solicitan una seña del 50%.</p>
+          </details>
+          <details>
+            <summary>¿Qué pasa si cancelo con poca anticipación?</summary>
+            <p>Las cancelaciones con menos de 48 horas tienen un cargo del 100% de la sesión.</p>
+          </details>
+          <details>
+            <summary>¿Trabajan solo por sesión individual?</summary>
+            <p>No. También ofrecen pack de 4 sesiones y pack de 10 sesiones, además de emitir factura para reintegros.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto">
+      <div class="container contact-grid">
+        <div class="contact-panel">
+          <h2>Contacto y ubicación</h2>
+          <p class="muted">Estamos en Almagro, Ciudad Autónoma de Buenos Aires, y podés escribirnos para consultar por turnos, servicios o modalidades.</p>
+          <div class="contact-list">
+            <div class="contact-item">
+              <small>Dirección</small>
+              <strong>Potosí 3910, Almagro, CABA</strong>
+            </div>
+            <div class="contact-item">
+              <small>Horarios</small>
+              <strong>Lunes a viernes · 8 a 21 hs</strong>
+            </div>
+            <div class="contact-item">
+              <small>WhatsApp / celular</small>
+              <strong><a href="https://wa.me/5491140453263" target="_blank" rel="noopener noreferrer">+54 9 11 4045-3263</a></strong>
+            </div>
+            <div class="contact-item">
+              <small>Teléfono</small>
+              <strong><a href="tel:01156301012">011 5630-1012</a></strong>
+            </div>
+            <div class="contact-item">
+              <small>Instagram</small>
+              <strong><a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">Ver perfil en Instagram</a></strong>
+            </div>
+          </div>
+          <div class="hero-actions" style="margin-top: 24px; margin-bottom: 0;">
+            <a class="btn" href="https://wa.me/5491140453263?text=Hola%20Emporio%20Kin%C3%A9sico%2C%20quiero%20consultar%20por%20sus%20servicios." target="_blank" rel="noopener noreferrer">Consultar por WhatsApp</a>
+            <a class="btn-secondary" href="https://www.google.com/maps/search/?api=1&query=Potosi+3910+Almagro+Buenos+Aires" target="_blank" rel="noopener noreferrer">Cómo llegar</a>
+          </div>
+        </div>
+
+        <div class="map-box">
+          <div>
+            <h3>Resumen del espacio</h3>
+            <ul class="check-list">
+              <li>Centro orientado a rehabilitación, movilidad y bienestar.</li>
+              <li>Servicios terapéuticos y complementarios en un mismo lugar.</li>
+              <li>Atención particular con opciones por sesión y por packs.</li>
+              <li>Muy buena reputación online con 61 opiniones y calificación 5.0.</li>
+            </ul>
+          </div>
+          <div class="mini-note">Nota: dejé el enlace de Instagram en formato genérico porque no me pasaste el usuario exacto del perfil.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      Landing demo adaptada para Emporio Kinésico
+    </div>
+  </footer>
+
+  <div class="floating-wa">
+    <a class="btn" href="https://wa.me/5491140453263?text=Hola%20Emporio%20Kin%C3%A9sico%2C%20quisiera%20reservar%20un%20turno." target="_blank" rel="noopener noreferrer">WhatsApp</a>
+  </div>
+</body>
+</html>
